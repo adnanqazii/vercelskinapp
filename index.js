@@ -19,22 +19,22 @@ const customLogger =require('../utils/logger')
   const bcrypt = require("bcryptjs");
   
   const users = [];
-  const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "skinapp",
-  });
-  
   // const db = mysql.createConnection({
-  //   host: "sql12.freemysqlhosting.net",
-  //   user: "sql12549542",
-  //   password: "YzNrawSSi6",
-  //   database: "sql12549542"
+  //   host: "localhost",
+  //   user: "root",
+  //   password: "",
+  //   database: "skinapp",
   // });
   
+  const db = mysql.createConnection({
+    host: "sql12.freemysqlhosting.net",
+    user: "sql12549542",
+    password: "YzNrawSSi6",
+    database: "sql12549542"
+  });
+  
     // Set router base path for local dev
-  const routerBasePath = process.env.NODE_ENV === 'dev' ? `/index` : `/.netlify/functions/index/`
+  // const routerBasePath = process.env.NODE_ENV === 'dev' ? `/index` : `/.netlify/functions/index/`
   router.get('/hello/', function(req, res) {
     res.send('hello world')
   })
@@ -798,7 +798,7 @@ const customLogger =require('../utils/logger')
     app.use(morgan(customLogger))
   
     // Setup routes
-    app.use(routerBasePath, router)
+    // app.use(routerBasePath, router)
   
     // Apply express middlewares
     router.use(cors())
